@@ -22,7 +22,7 @@ let guess;
 let playAgain;
 
 // Starting alert message
-alert(`Welcome to the "GUESS THAT NUMBER!" Please click "OK" to start the game.`);
+alert(`Welcome to "GUESS THAT NUMBER!" Please click "OK" to start the game.`);
 
 // 
 while (restartGame){
@@ -58,15 +58,58 @@ while (restartGame){
         guess = parseInt(guess); 
 
         // Ensures user guess is valid within parameters set
-        while (!guess || guess < 1 || gues > rangeNum){
+        while (!guess || guess < 1 || guess > rangeNum){
             guess = parseInt(prompt(`Please enter a number between 1 and ${rangeNum}`));
         }
 
         // Removes an attempt
-        attemps--;
+        attempts--;
 
-        break;
+        // Checks to see if the user guessed correctly. If so, the break ends the game
+        if (guess === randomNum){
+            alert(`YOU GUESSED ${randomNum}. CONGRATULATIONS!`);
+            alert(`YOU'RE WINNER`);
+            break;
+
+            // Ends the game with a message if user is out of attempts
+        } else if (attempts === 0){
+            alert(`YOU'RE OUT OF GUESSES. THE NUMBER WAS ${randomNum}. OH WELL. SUCKS TO SUCK`);
+            break;
+
+            // Prompts for new guess when number entered is lower than the random number and the user has attempts remaining
+        } else if (guess < randomNum){
+            guess = prompt(`Your guess was too low. The number is more than ${guess}. You have ${attempts} attempt(s) remaining`);
+
+            // Prompts for new guess when number entered is higher than the random number and the user has attempts remaining
+        } else {
+            guess = prompt(`Your guess was too high. The number is less than ${guess}. You have ${randomNum} attempt(s) remaining`);
+        }
     }
 
+    // Prompts the user to play again or end the session
+    playAgain = prompt(`Play again? Type "Yes" or "No"`);
+
+    // Loop continues until the user submits a valid response
+    while (true){
+        // Checks for a response of No
+        if (playAgain.toUpperCase() === "No" || playAgain.       toUpperCase() === "N"){
+
+            // Thanks the user for playing and doesn't restart game
+            alert(`Thanks for playing!`);
+            restartGame = false;
+            break;
+
+            // Checks for a response of Yes
+        } else if (playAgain.toUpperCase() === "Yes" || playAgain.toUpperCase() === "Y"){
+            break;
+
+            // Prompt for all other responses. Restarts this loop
+        } else {
+            playAgain = prompt(`Please enter "Yes" or "No"`);
+        }
+
+    // Ends the game
     break;
+    }
+break;
 }
