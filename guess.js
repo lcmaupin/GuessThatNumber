@@ -54,6 +54,15 @@ while (restartGame){
 
     // Continues looping until user guess the correct number or exhausts their attempts
     while (true){
+        // Cheat code to display randomNum to user
+        if (guess === `Swordfish`){
+            alert(`The answer is ${randomNum}`);
+
+            // Allows the user to guess again
+            guess = prompt(`Please enter a guess from 1 to ${rangeNum}. You have ${attempts} attempt(s) remaining:`);
+        }
+
+
         // Converts guess string into number
         guess = parseInt(guess); 
 
@@ -92,7 +101,7 @@ while (restartGame){
     // Loop continues until the user submits a valid response
     while (true){
         // Checks for a response of No
-        if (playAgain.toUpperCase() === "No" || playAgain.       toUpperCase() === "N"){
+        if (playAgain.toUpperCase() === "NO" || playAgain.       toUpperCase() === "N"){
 
             // Thanks the user for playing and doesn't restart game
             alert(`Thanks for playing!`);
@@ -100,16 +109,12 @@ while (restartGame){
             break;
 
             // Checks for a response of Yes
-        } else if (playAgain.toUpperCase() === "Yes" || playAgain.toUpperCase() === "Y"){
+        } else if (playAgain.toUpperCase() === "YES" || playAgain.toUpperCase() === "Y"){
             break;
 
             // Prompt for all other responses. Restarts this loop
         } else {
             playAgain = prompt(`Please enter "Yes" or "No"`);
         }
-
-    // Ends the game
-    break;
     }
-break;
 }
