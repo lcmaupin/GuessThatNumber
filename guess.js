@@ -49,7 +49,24 @@ while (restartGame){
         attempts = parseInt(prompt(enterNumText));
     }
 
-    // 
+    // Prompts user to enter a guess within the range that they specified. Stores their input as a string in guess
+    guess = prompt(`Please enter a guess from 1 to ${rangeNum}. You have ${attempts} attempt(s) remaining:`)
+
+    // Continues looping until user guess the correct number or exhausts their attempts
+    while (true){
+        // Converts guess string into number
+        guess = parseInt(guess); 
+
+        // Ensures user guess is valid within parameters set
+        while (!guess || guess < 1 || gues > rangeNum){
+            guess = parseInt(prompt(`Please enter a number between 1 and ${rangeNum}`));
+        }
+
+        // Removes an attempt
+        attemps--;
+
+        break;
+    }
 
     break;
 }
